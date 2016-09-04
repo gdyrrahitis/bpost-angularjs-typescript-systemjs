@@ -6,7 +6,16 @@
         "sourceMap": true,
         "target": "es6"
     },
-
+    "files": [
+        "typings/index.d.ts",
+        "src/routes.ts",
+        "src/main.ts",
+        "src/types/department.type.ts",
+        "src/types/employee.type.ts",
+        "src/department.service/department.service.ts",
+        "src/department.controller/department.controller.ts",
+        "src/home.controller/home.controller.ts"
+    ],
     "exclude": [
         "node_modules",
         "typings"
