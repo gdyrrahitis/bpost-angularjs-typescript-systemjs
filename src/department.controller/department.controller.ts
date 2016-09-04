@@ -1,12 +1,12 @@
-// var config: AppConfig.Configuration = require("../app.config.json!");
+var config: AppConfig.Configuration = require("../app.config.json!");
 import { Employee } from "../types/employee.type";
 import { Department } from "../types/department.type";
 import { DepartmentService } from "../department.service/department.service";
-import * as $ from "jquery";
-import "bootstrap";
 
 export class DepartmentController {
-    constructor(private $scope: any, private $routeParams: any, private $localStorage: any, private departmentService: DepartmentService) {
+    private $uibModalInstance: any;
+
+    constructor(private $scope: any, private $routeParams: any, private $localStorage: any, private departmentService: DepartmentService, private $uibModal: any) {
         let employees: Employee[] = [];
         if (this.$localStorage.employees) {
             employees = this.$localStorage.employees.filter((v) => v.departmentId === $routeParams.id);
@@ -19,11 +19,10 @@ export class DepartmentController {
         $scope.submit = this.submit;
         $scope.removeEmployee = this.removeEmployee;
         $scope.resetEmployees = this.resetEmployees;
-        
+
         let currentDepartment = departmentService.getDepartment(<number>$routeParams.id);
         $scope.departmentName = currentDepartment.name;
-        $scope.maxAllowedEmployeesForDepartment = 5; 
-            // config.client.departments.find(v => v.name === currentDepartment.name.toLowerCase()).maxAllowedEmployees;
+        $scope.maxAllowedEmployeesForDepartment = config.client.departments.find(v => v.name === currentDepartment.name.toLowerCase()).maxAllowedEmployees;
     }
 
     removeEmployee = (employee: Employee) => {
@@ -37,7 +36,30 @@ export class DepartmentController {
     }
 
     addNew = () => {
-        this.toggleModal();
+        this.$uibModalInstance = this.$uibModal.open({
+            animation: true,
+            size: "lg",
+            scope: this.$scope,
+            template: `<div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add new employee</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form name="NewEmployee" ng-submit="submit(NewEmployee)">
+                                <div class="form-group">
+                                    <input type="text" name="name" ng-model="$parent.name" class="form-control" placeholder="Employee name" required />
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </form>
+                        </div>
+                    </div>`,
+            resolve: {
+                name: () => {
+                    return this.$scope.name;
+                }
+            }
+        });
     }
 
     resetEmployees = () => {
@@ -64,11 +86,7 @@ export class DepartmentController {
             form.$setPristine();
             this.$scope.name = "";
 
-            this.toggleModal();
+            this.$uibModalInstance.dismiss();
         }
-    }
-
-    private toggleModal() {
-        (<any>$(".modal")).modal('toggle');
     }
 }
