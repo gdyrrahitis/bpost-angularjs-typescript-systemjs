@@ -1,0 +1,4 @@
+node_modules
+typings
+src/**/*.js.map
+src/**/*.js

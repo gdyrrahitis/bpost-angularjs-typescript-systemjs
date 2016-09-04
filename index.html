@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <base href="/" />
+    <title>AngularJS + Typescript + SystemJS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+
+    <!--Module loader-->
+    <script src="/node_modules/systemjs/dist/system.src.js"></script>
+    <script src="/systemjs-config.js"></script>
+    <script>
+        // System.import("json").then(function() {
+        //     return System.import("app").catch(function(err) { console.log(err); });
+        // }).then(null, function(err){
+		// 	console.error("Oh no, error!", err);
+		// });
+        System.import("app").catch(function(err) { console.log(err); });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <ng-view></ng-view>
+    </div>
+</body>
+
+</html>
