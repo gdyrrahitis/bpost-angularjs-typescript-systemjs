@@ -22,6 +22,7 @@ declare module AppConfig {
 
     interface Client {
         basePath: string;
+        html5Mode: boolean,
         routes: Route[];
         departments: Department[],
         modal: Modal

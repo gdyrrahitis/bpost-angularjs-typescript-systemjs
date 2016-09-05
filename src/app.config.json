@@ -1,6 +1,7 @@
 {
     "client": {
         "basePath": "/",
+        "html5Mode": true,
         "routes": [
             {
                 "path": "/",
