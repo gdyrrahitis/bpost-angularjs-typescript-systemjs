@@ -16,7 +16,6 @@ export class DepartmentController {
 
         $scope.employees = employees;
         $scope.addNew = this.addNew;
-        $scope.submit = this.submit;
         $scope.removeEmployee = this.removeEmployee;
         $scope.resetEmployees = this.resetEmployees;
 
@@ -37,26 +36,28 @@ export class DepartmentController {
 
     addNew = () => {
         this.$uibModalInstance = this.$uibModal.open({
-            animation: true,
-            size: "lg",
+            animation: config.client.modal.animation,
+            size: config.client.modal.size,
+            ariaLabelledBy: config.client.modal.ariaLabelledBy,
+            ariaDescribedBy: config.client.modal.ariaDescribedBy,
             scope: this.$scope,
-            template: `<div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title">Add new employee</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form name="NewEmployee" ng-submit="submit(NewEmployee)">
-                                <div class="form-group">
-                                    <input type="text" name="name" ng-model="$parent.name" class="form-control" placeholder="Employee name" required />
-                                </div>
-                                <button type="submit" class="btn btn-primary">Save changes</button>
-                            </form>
-                        </div>
-                    </div>`,
+            templateUrl: config.client.modal.templateUrl,
+            controller: config.client.modal.controller,
+            controllerAs: config.client.modal.controllerAs,
             resolve: {
-                name: () => {
-                    return this.$scope.name;
+                id: () => {
+                    return this.$routeParams.id;
+                }
+            }
+        });
+
+        this.$uibModalInstance.result.then((name: string) => {
+            if (name) {
+                let employee: Employee = { name: name, departmentId: this.$routeParams.id };
+
+                if (this.$scope.maxAllowedEmployeesForDepartment > this.$scope.employees.length) {
+                    this.$scope.employees.push(employee);
+                    this.$localStorage.employees.push(employee);
                 }
             }
         });
@@ -72,21 +73,5 @@ export class DepartmentController {
         });
         // $localStorage.employees contains now only employees from the other departments
         this.$localStorage.employees = rest;
-    }
-
-    submit = (form: angular.IFormController) => {
-        if (form.$valid) {
-            let employee: Employee = { name: this.$scope.name, departmentId: this.$routeParams.id };
-
-            if (this.$scope.maxAllowedEmployeesForDepartment > this.$scope.employees.length) {
-                this.$scope.employees.push(employee);
-                this.$localStorage.employees.push(employee);
-            }
-
-            form.$setPristine();
-            this.$scope.name = "";
-
-            this.$uibModalInstance.dismiss();
-        }
     }
 }
