@@ -1,5 +1,7 @@
 node_modules
-typings
+!/typings
+/typings/*
+!/typings/custom
 src/**/*.js.map
 src/**/*.js
 /.vscode
