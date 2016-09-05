@@ -3,9 +3,13 @@ Sample code to create an AngularJS application with Typescript and the SystemJS 
 Also, custom Typescript definitions and SystemJS JSON plugin support is presented in the sample code.
 
 Application presents various departments, which can hold a number of employees. Each department has a maximum number of employees it can hold.
-Departments are fetched through and angular service.
+
+Departments are fetched through an angular service.
+
 Employees are persisted to departments with `ngStorage`.
+
 Application is using `ui.bootstrap` for modals. 
+
 User can assign or unassign employees to department.
 
 # Installation
