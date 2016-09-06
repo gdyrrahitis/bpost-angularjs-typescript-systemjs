@@ -1,5 +1,3 @@
-import { Employee } from "../types/employee.type";
-
 interface IEmployeeModalControllerScope extends ng.IScope {
     submit: (form: angular.IFormController) => void;
     cancel: () => void;
