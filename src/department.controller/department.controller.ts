@@ -2,9 +2,12 @@ var config: AppConfig.Configuration = require("../app.config.json!");
 import { DepartmentService } from "../department.service/department.service";
 
 export class DepartmentController {
-    private $uibModalInstance: any;
+    private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance;
 
-    constructor(private $scope: IDepartmentControllerScope, private $routeParams: any, private $localStorage: any, private departmentService: DepartmentService, private $uibModal: any) {
+    constructor(private $scope: IDepartmentControllerScope, private $routeParams: any,
+        private $localStorage: any, private departmentService: DepartmentService,
+        private $uibModal: angular.ui.bootstrap.IModalService) {
+
         let employees: Employee[] = [];
         if (this.$localStorage.employees) {
             employees = this.$localStorage.employees.filter((v) => v.departmentId === $routeParams.id);
@@ -36,8 +39,6 @@ export class DepartmentController {
         this.$uibModalInstance = this.$uibModal.open({
             animation: config.client.modal.animation,
             size: config.client.modal.size,
-            ariaLabelledBy: config.client.modal.ariaLabelledBy,
-            ariaDescribedBy: config.client.modal.ariaDescribedBy,
             scope: this.$scope,
             templateUrl: config.client.modal.templateUrl,
             controller: config.client.modal.controller,
