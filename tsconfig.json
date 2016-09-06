@@ -14,7 +14,8 @@
         "src/types/employee.type.ts",
         "src/department.service/department.service.ts",
         "src/department.controller/department.controller.ts",
-        "src/home.controller/home.controller.ts"
+        "src/home.controller/home.controller.ts",
+        "src/employee.modal.controller/employee.modal.controller.ts"
     ],
     "exclude": [
         "node_modules",
