@@ -1,6 +1,4 @@
 var config: AppConfig.Configuration = require("../app.config.json!");
-import { Employee } from "../types/employee.type";
-import { Department } from "../types/department.type";
 import { DepartmentService } from "../department.service/department.service";
 
 interface IDepartmentControllerScope extends ng.IScope {
