@@ -1,6 +1,5 @@
 import "angular";
 import { DepartmentService } from "../department.service/department.service";
-import { Department } from "../types/department.type";
 
 interface IHomeControllerScope extends ng.IScope {
     departments: Department[];
