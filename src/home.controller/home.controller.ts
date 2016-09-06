@@ -5,7 +5,7 @@ export class HomeController {
     constructor(
         private departmentService: DepartmentService,
         private $scope: IHomeControllerScope,
-        private $location: any) {
+        private $location: ng.ILocationService) {
         $scope.departments = departmentService.getDepartments();
         $scope.navigateToDepartment = this.navigateToDepartment;
     }
