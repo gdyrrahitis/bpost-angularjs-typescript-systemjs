@@ -1,15 +1,6 @@
 var config: AppConfig.Configuration = require("../app.config.json!");
 import { DepartmentService } from "../department.service/department.service";
 
-interface IDepartmentControllerScope extends ng.IScope {
-    employees: Employee[];
-    addNew: () => void;
-    removeEmployee: (employee: Employee) => void;
-    resetEmployees: () => void;
-    departmentName: string;
-    maxAllowedEmployeesForDepartment: number;
-}
-
 export class DepartmentController {
     private $uibModalInstance: any;
 
