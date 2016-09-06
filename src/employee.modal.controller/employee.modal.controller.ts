@@ -1,5 +1,5 @@
 export class EmployeeModalController {
-    constructor(private $uibModalInstance: any, private $scope: IEmployeeModalControllerScope, private id: number) {
+    constructor(private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance, private $scope: IEmployeeModalControllerScope, private id: number) {
         $scope.submit = this.submit;
         $scope.cancel = this.cancel;
     }
