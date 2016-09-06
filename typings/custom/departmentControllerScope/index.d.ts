@@ -1,5 +1,5 @@
 /// <reference path="../../globals/angular/index.d.ts" />
-/// <reference path="../employee/employee.d.ts" />
+/// <reference path="../employee/index.d.ts" />
 
 declare interface IDepartmentControllerScope extends ng.IScope {
     employees: Employee[];

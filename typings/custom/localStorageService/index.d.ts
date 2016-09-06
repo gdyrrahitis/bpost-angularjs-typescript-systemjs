@@ -1,5 +1,5 @@
 /// <reference path="../../globals/angularlocalstorage/index.d.ts" />
-/// <reference path="../employee/employee.d.ts" />
+/// <reference path="../employee/index.d.ts" />
 
 
 declare interface IApplicationLocalStorageService extends angular.localStorage.ILocalStorageService {
