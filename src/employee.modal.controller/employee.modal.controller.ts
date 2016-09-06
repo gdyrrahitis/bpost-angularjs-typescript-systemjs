@@ -1,7 +1,13 @@
 import { Employee } from "../types/employee.type";
 
+interface IEmployeeModalControllerScope extends ng.IScope {
+    submit: (form: angular.IFormController) => void;
+    cancel: () => void;
+    name: string;
+}
+
 export class EmployeeModalController {
-    constructor(private $uibModalInstance: any, private $scope: any, private id: number) {
+    constructor(private $uibModalInstance: any, private $scope: IEmployeeModalControllerScope, private id: number) {
         $scope.submit = this.submit;
         $scope.cancel = this.cancel;
     }

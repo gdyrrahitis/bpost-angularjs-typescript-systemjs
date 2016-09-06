@@ -3,10 +3,19 @@ import { Employee } from "../types/employee.type";
 import { Department } from "../types/department.type";
 import { DepartmentService } from "../department.service/department.service";
 
+interface IDepartmentControllerScope extends ng.IScope {
+    employees: Employee[];
+    addNew: () => void;
+    removeEmployee: (employee: Employee) => void;
+    resetEmployees: () => void;
+    departmentName: string;
+    maxAllowedEmployeesForDepartment: number;
+}
+
 export class DepartmentController {
     private $uibModalInstance: any;
 
-    constructor(private $scope: any, private $routeParams: any, private $localStorage: any, private departmentService: DepartmentService, private $uibModal: any) {
+    constructor(private $scope: IDepartmentControllerScope, private $routeParams: any, private $localStorage: any, private departmentService: DepartmentService, private $uibModal: any) {
         let employees: Employee[] = [];
         if (this.$localStorage.employees) {
             employees = this.$localStorage.employees.filter((v) => v.departmentId === $routeParams.id);
@@ -27,7 +36,7 @@ export class DepartmentController {
     removeEmployee = (employee: Employee) => {
         // Remove employee from $scope
         var scopeIndex = (<Employee[]>this.$scope.employees).findIndex(v => v == employee);
-        (<Employee[]>this.$scope.employees).splice(scopeIndex, 1);
+        this.$scope.employees.splice(scopeIndex, 1);
 
         // Remove employee from $localStorage
         var storageIndex = (<Employee[]>this.$localStorage.employees).findIndex(v => v == employee);
@@ -65,7 +74,7 @@ export class DepartmentController {
 
     resetEmployees = () => {
         // Remove all employees from $scope
-        (<Employee[]>this.$scope.employees).splice(0, this.$scope.employees.length);
+        this.$scope.employees.splice(0, this.$scope.employees.length);
 
         // Get all employees from the other departments
         var rest = (<Employee[]>this.$localStorage.employees).filter(v => {
