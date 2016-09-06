@@ -4,8 +4,10 @@ import { DepartmentService } from "../department.service/department.service";
 export class DepartmentController {
     private $uibModalInstance: angular.ui.bootstrap.IModalServiceInstance;
 
-    constructor(private $scope: IDepartmentControllerScope, private $routeParams: any,
-        private $localStorage: any, private departmentService: DepartmentService,
+    constructor(private $scope: IDepartmentControllerScope, 
+        private $routeParams: IApplicationRouteParams,
+        private $localStorage: any, 
+        private departmentService: DepartmentService,
         private $uibModal: angular.ui.bootstrap.IModalService) {
 
         let employees: Employee[] = [];
