@@ -4,6 +4,9 @@
     "angular-ui-bootstrap": "registry:dt/angular-ui-bootstrap#0.13.3+20160705221453",
     "appconfig": "file:typings/custom/appconfig/appconfig.d.ts",
     "department": "file:typings/custom/department/department.d.ts",
+    "departmentControllerScope": "file:typings/custom/departmentControllerScope/departmentControllerScope.d.ts",
+    "employeeModalControllerScope": "file:typings/custom/employeeModalControllerScope/employeeModalControllerScope.d.ts",
+    "homeControllerScope": "file:typings/custom/homeControllerScope/homeControllerScope.d.ts",
     "employee": "file:typings/custom/employee/employee.d.ts",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "node": "registry:dt/node#6.0.0+20160831021119"
