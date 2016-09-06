@@ -27,8 +27,6 @@
         "modal": {
             "animation": true,
             "size": "lg",
-            "ariaLabelledBy": "modal-title",
-            "ariaDescribedBy": "modal-body",
             "templateUrl": "src/employee.modal.controller/employee.modal.controller.html",
             "controller": "employeeModalController",
             "controllerAs": "$scope"
