@@ -6,7 +6,7 @@ export class DepartmentController {
 
     constructor(private $scope: IDepartmentControllerScope, 
         private $routeParams: IApplicationRouteParams,
-        private $localStorage: any, 
+        private $localStorage: IApplicationLocalStorageService, 
         private departmentService: DepartmentService,
         private $uibModal: angular.ui.bootstrap.IModalService) {
 
@@ -22,19 +22,19 @@ export class DepartmentController {
         $scope.removeEmployee = this.removeEmployee;
         $scope.resetEmployees = this.resetEmployees;
 
-        let currentDepartment = departmentService.getDepartment(<number>$routeParams.id);
+        let currentDepartment = departmentService.getDepartment($routeParams.id);
         $scope.departmentName = currentDepartment.name;
         $scope.maxAllowedEmployeesForDepartment = config.client.departments.find(v => v.name === currentDepartment.name.toLowerCase()).maxAllowedEmployees;
     }
 
     removeEmployee = (employee: Employee) => {
         // Remove employee from $scope
-        var scopeIndex = (<Employee[]>this.$scope.employees).findIndex(v => v == employee);
+        var scopeIndex = this.$scope.employees.findIndex(v => v == employee);
         this.$scope.employees.splice(scopeIndex, 1);
 
         // Remove employee from $localStorage
-        var storageIndex = (<Employee[]>this.$localStorage.employees).findIndex(v => v == employee);
-        (<Employee[]>this.$localStorage.employees).splice(storageIndex, 1);
+        var storageIndex = this.$localStorage.employees.findIndex(v => v == employee);
+        this.$localStorage.employees.splice(storageIndex, 1);
     }
 
     addNew = () => {
@@ -69,7 +69,7 @@ export class DepartmentController {
         this.$scope.employees.splice(0, this.$scope.employees.length);
 
         // Get all employees from the other departments
-        var rest = (<Employee[]>this.$localStorage.employees).filter(v => {
+        var rest = this.$localStorage.employees.filter(v => {
             return v.departmentId != this.$routeParams.id;
         });
         // $localStorage.employees contains now only employees from the other departments
