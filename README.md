@@ -18,7 +18,7 @@ User can assign or unassign employees to department.
 3. Application launches in your browser
 
 # Article
-Repository is created to support a blog post for AngularJS-Typescript-SystemJS, which can be found in [here]()
+Repository is created to support a blog post for AngularJS-Typescript-SystemJS, which can be found in [here](https://georgedyrra.wordpress.com/2016/09/06/angularjs-with-typescript-and-systemjs/)
 
 # Licence
 Apache License Version 2.0
