@@ -10,6 +10,7 @@
     "employee": "file:typings/custom/employee/employee.d.ts",
     "employeeModalControllerScope": "file:typings/custom/employeeModalControllerScope/employeeModalControllerScope.d.ts",
     "homeControllerScope": "file:typings/custom/homeControllerScope/homeControllerScope.d.ts",
+    "localStorageService": "file:typings/custom/localStorageService/localStorageService.d.ts",
     "jquery": "registry:dt/jquery#1.10.0+20160704162008",
     "node": "registry:dt/node#6.0.0+20160831021119",
     "routeParams": "file:typings/custom/routeParams/routeParams.d.ts"
