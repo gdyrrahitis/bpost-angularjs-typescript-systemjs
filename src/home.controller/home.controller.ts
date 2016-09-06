@@ -1,4 +1,3 @@
-import "angular";
 import { DepartmentService } from "../department.service/department.service";
 
 export class HomeController {
