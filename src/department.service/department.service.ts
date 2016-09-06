@@ -1,5 +1,3 @@
-import { Department } from "../types/department.type";
-
 export class DepartmentService {
     private _departments: Department[];
 
