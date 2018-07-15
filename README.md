@@ -1,4 +1,5 @@
-# bpost-angularjs-typescript-systemjs
+# AngularJS with Typescript and SystemJS
+Related blog post can be found [here](http://codereform.com/blog/post/angularjs-with-typescript-and-systemjs/)
 Sample code to create an AngularJS application with Typescript and the SystemJS module loader.
 Also, custom Typescript definitions and SystemJS JSON plugin support is presented in the sample code.
 
